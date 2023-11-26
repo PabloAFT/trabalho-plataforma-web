@@ -1,37 +1,40 @@
 package trabalho.de.web.web.user;
 
 import java.util.Collection;
+import java.util.HashSet;
 
-
-
-
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
+import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
 
 
-@Entity
+@Document("user")
 public class User implements UserDetails {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Indexed(unique=true)
+    private String id;
 
     private String username;
     private String password;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getAuthorities'");
+        HashSet<SimpleGrantedAuthority> authorities = new HashSet<>();
+        authorities.add(new SimpleGrantedAuthority("user"));
+        return authorities ;
     }
 
-    public Long getId() {
+    public String getId() {
         return id;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
     
 
