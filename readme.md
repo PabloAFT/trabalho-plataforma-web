@@ -1,19 +1,22 @@
-Trabalho de desenvolvimento em plataforma web
+<h3>Trabalho de desenvolvimento em plataforma web</h3>
 
-login: admin
-senha: admin
+login: admin<br>
+senha: admin<br>
 
-BACKEND
-Linguagem: Java
-Framework: Spring Boot
+<h5>BACKEND  </h5>
+Linguagem: Java<br>
+Framework: Spring Boot<br>
 
-FRONTEND
-Linguagem: html
-Framework: Bootstrap
+<h5> FRONTEND </h5>
+Linguagem: html<br>
+Framework: Bootstrap<br>
 
-API
-/api/users - GET - retorna todos os usuários
-/api/users - POST - Adiciona um usuário
-/api/users/{id} - GET - retorna o usuário com base no id
-/api/users/{id} - PUT - Edita o usuário
-/api/users/{id} - DELETE - Deleta o usuário
+<h5> BASE DE DADOS </h5>
+MongoDB<br>
+
+<h5> API</h5>
+/api/users - GET - retorna todos os usuários <br>
+/api/users - POST - Adiciona um usuário <br>
+/api/users/{id} - GET - retorna o usuário com base no id <br>
+/api/users/{id} - PUT - Edita o usuário <br>
+/api/users/{id} - DELETE - Deleta o usuário <br>
