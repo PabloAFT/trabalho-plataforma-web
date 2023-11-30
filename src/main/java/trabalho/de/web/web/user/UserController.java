@@ -4,17 +4,16 @@ import java.net.URI;
 import java.util.List;
 import java.util.NoSuchElementException;
 
-import org.springframework.data.repository.query.Param;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestBody;
 
 
@@ -66,6 +65,17 @@ public class UserController {
             userService.deleteUserById(userId);
             return ResponseEntity.ok().build();
         } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.badRequest().build();
+        }
+    }
+    @PutMapping("/{userId}")
+    public ResponseEntity<String> updateUser(@PathVariable String userId, @RequestBody User user) {
+        try {
+            userService.updateUser(userId,user);
+            return ResponseEntity.ok().build();
+        } catch (Exception e) {
+            e.printStackTrace();
             return ResponseEntity.badRequest().build();
         }
     }

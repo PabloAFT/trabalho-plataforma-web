@@ -1,9 +1,8 @@
 package trabalho.de.web.web.user;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -22,6 +21,16 @@ public class UserService implements UserDetailsService {
 
     public List<User> getAllUsers() {
         return userRepository.findAll();
+    }
+
+    public User updateUser(String userId, User user) {
+        if (userRepository.existsById(userId)) {
+            user.setId(userId);
+            return userRepository.save(user);
+        } else {
+            throw new NoSuchElementException();
+        }
+        
     }
 
 
