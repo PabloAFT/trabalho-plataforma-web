@@ -8,7 +8,6 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import jakarta.servlet.http.HttpServletResponse;
@@ -45,11 +44,7 @@ public class LoginController {
         }
         
 	}
-    @GetMapping("/api/login")
-    public void method(HttpServletResponse httpServletResponse) {
-    httpServletResponse.setHeader("Location", "/api/users");
-    httpServletResponse.setStatus(302);
-}
+    
 
     @GetMapping("/logout")
 public ResponseEntity<Void> logout() {

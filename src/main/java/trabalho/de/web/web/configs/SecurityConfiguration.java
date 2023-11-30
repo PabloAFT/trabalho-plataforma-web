@@ -16,7 +16,6 @@ import org.springframework.security.web.context.DelegatingSecurityContextReposit
 import org.springframework.security.web.context.HttpSessionSecurityContextRepository;
 import org.springframework.security.web.context.RequestAttributeSecurityContextRepository;
 
-
 import trabalho.de.web.web.user.UserService;
 
 @EnableWebSecurity()
@@ -34,9 +33,9 @@ public class SecurityConfiguration {
                 .authorizeHttpRequests((authorize) -> authorize
 
                         .requestMatchers(HttpMethod.POST, "/api/login").permitAll()
-                        .requestMatchers(HttpMethod.GET, "/auth/me").permitAll()
                         .requestMatchers(HttpMethod.GET, "/login.html").permitAll()
                         .requestMatchers(HttpMethod.GET, "/index.html").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/public/**").permitAll()
 
                         .anyRequest().authenticated()
 
@@ -66,7 +65,6 @@ public class SecurityConfiguration {
 
         return new ProviderManager(authenticationProvider);
     }
-
 
     @Bean
     public PasswordEncoder passwordEncoder() {
